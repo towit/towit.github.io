@@ -1,0 +1,92 @@
+---
+title: gitlab 部署hexo（采用next主题）
+date: 2017-11-13 15:40:12
+categories: 技术
+tags: 技术
+copyright: true
+---
+
+<!-- more -->
+
+本文记录了在{% extlink GitLab Pages https://docs.gitlab.com/ee/user/project/pages/index.html "GitLab Pages" %}服务上搭建{% extlink Hexo https://hexo.io/zh-cn/ "Hexo" %}博客，并且通过{% extlink CloudFlare https://www.cloudflare.com/ "CloudFlare" %}实现了自定义域名和全程**HTTPS**。
+
+使用`GitLab Pages`部署`Hexo`博客只需要把博客源代码`Push`到`Repo`，然后配置好`GitLab Continuous Integration(GitLab CI)`，就会自动渲染和部署`Hexo`博客。`GitLab Pages`可以绑定域名，而且可以上传自定义`SSL`证书，本文使用的是`CloudFlare`的免费`SSL`证书。  
+
+在`GitHub`上搭建`Hexo`博客只能本地渲染成`HTML`文件，然后`hexo d`把渲染后的文件`push`到`repo`。如果需要管理博客源文件就需要新建一个`Repo`，或者新建一个分支管理博客源代码。使用`GitHub`另外一个缺点就是`GitHub Pages`自定义域名就不能强制**HTTPS**。  
+
+### Hexo初始化
+在本地先初始化`Hexo`目录，建议参考官网教程，本文就不详细介绍。
+```javascript
+$ npm install -g hexo-cli
+```
+{% note info %}
+如果 Hexo 是使用 GitLab 搭建，需要把主题中的 `.git` 删除。
+{% endnote %}
+
+### GitLab仓库
+新建一个公开的仓库，命名为`yourname.gitlab.io`，其中`yourname`是你的`GitLab`用户名（下文同样）。同时在`GitLab`设置中添加你的`SSH`秘钥，然后就可以本地`Hexo`目录和远程仓库相关联起来。
+```git
+cd existing_folder
+git init
+git remote add origin git@gitlab.com:yourname/yourname.gitlab.io.git
+```
+
+### GitLab CI
+在`Hexo`博客根目录中新建文件`.gitlab-ci.yml`，可以参考如下配置，增加插件的自行添加
+```javascript
+image: node:4.5.0
+
+pages:
+  cache:
+    paths:
+    - node_modules/
+
+  script:
+  - npm install hexo-cli -g
+  - npm install
+  - hexo deploy
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+```
+添加`.gitlab-ci.yml`就可以把博客源代码 `push` 到 `repo` 中。
+```git
+$ git add .
+$ git commit -m"hexo init"
+$ git push origin master 
+```
+然后可以在博客仓库的 `Pipelines` 中查看到 `Hexo` 渲染和部署的过程。
+
+
+如果构建失败，你会收到项目构建失败的邮件，你可以在 `Pipelines` 中查看构建失败的原因，比如`.gitlab-ci.yml`中`script`缺失了必须的插件。构建成功后，可以访问`yourname.gitlab.io`查看搭建效果。  
+
+### 绑定域名
+想要使用`CloudFlare`的**HTTPS**服务，就必须使用它的`nameserver`，也就是使用它的域名解析服务。
+```
+irma.ns.cloudflare.com
+jay.ns.cloudflare.com
+```
+
+当你的域名接入之后，点击 `Crypto` ，找到 `Origin Certificates` ，点击 `Create Certificate` 。
+
+
+### CloudFlare设置
+绑定完域名和设置完 **HTTPS** 之后，还需要设置规则，强制整个网站 HTTPS 化，以及使用`301重定向`把 `no-www` 重定向到 `www` 。
+在`CloudFlare`中找到`Page Rules`，免费用户可以建立三条规则。
+#### 全站HTTPS化
+强制整个网站走**HTTPS**。
+
+
+#### 301重定向
+把不带`www`的根域名301重定向到带`www`的二级域名，这个看个人喜好。
+
+
+#### 缓存整个网站
+因为本博客是静态博客，所以可以设置CloudFlare缓存整个网站的静态文件。
+
+
+
+### 参考链接
+{% exturl Setting up GitLab Pages with CloudFlare Certificates https://about.gitlab.com/2017/02/07/setting-up-gitlab-pages-with-cloudflare-certificates/ %}<br>{% exturl Secure and fast GitHub Pages with CloudFlare https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/ %}<br>{% exturl Example Hexo site using GitLab Pages https://gitlab.com/pages/hexo %}

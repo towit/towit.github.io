@@ -1,0 +1,39 @@
+# 使用语言
+language: node_js
+# node版本
+node_js: stable
+# 设置只监听哪个分支
+branches:
+  only:
+  - source
+
+directories:
+  - node_modules
+# tarvis生命周期执行顺序详见官网文档
+before_install:
+- git config --global user.name "towit"
+- git config --global user.email "ziyou@topluo.com"
+- npm install -g hexo-cli
+- npm install gulp -g
+ - npm install hexo-neat --save
+ - npm install hexo-helper-live2d --save
+ - npm install hexo-generator-searchdb --save
+ - npm install hexo-generator-baidu-sitemap --save
+ - npm install hexo-generator-sitemap --save
+ - npm install hexo-generator-feed --save
+ - npm install hexo-autonofollow --save
+ - npm install hexo-wordcount --save
+ 
+script:
+- hexo clean
+- hexo g && gulp
+after_success:
+- cd ./public
+- git init
+- git add --all .
+- git commit -m "Travis CI Auto Builder"
+# 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
+- git push --quiet --force https://$hexo@github.com/towit/towit.github.io.git
+  master
+- git push --quiet --force https://deweke:lzh1989.@git.coding.net/deweke/deweke.coding.me.git
+  master
