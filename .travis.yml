@@ -14,15 +14,6 @@ before_install:
 - git config --global user.name "towit"
 - git config --global user.email "ziyou@topluo.com"
 - npm install hexo-cli -g
-- npm install
-- npm install hexo-neat --save
-- npm install hexo-helper-live2d --save
-- npm install hexo-generator-searchdb --save
-- npm install hexo-generator-baidu-sitemap --save
-- npm install hexo-generator-sitemap --save
-- npm install hexo-generator-feed --save
-- npm install hexo-autonofollow --save
-- npm install hexo-wordcount --save
  
 script:
 - hexo clean
