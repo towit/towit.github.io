@@ -16,8 +16,6 @@ before_install:
 - npm install hexo-cli -g
  
 script:
-- npm update hexo
-- cd themes/next && git pull && cd /
 - hexo clean
 - hexo g
 after_success:
