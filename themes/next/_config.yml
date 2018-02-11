@@ -412,8 +412,8 @@ gitalk:
   enable: true
   githubID: towit
   repo: gitment
-  ClientID: 48c698a1d22ffe2c16e4
-  ClientSecret: ca18da3fd2cd0fbe7fcb5d89eaa16d02547bbd8e
+  ClientID: 2eaae7ca4a1a5d30890a
+  ClientSecret: c3f6679e002644ded2c7e342362b2517db803c48
   adminUser: towit
   distractionFreeMode: true
 
