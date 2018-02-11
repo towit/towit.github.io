@@ -1,10 +1,12 @@
 ---
 title: office 2016 电话激活教程
-date: 2018-02-11 13:04:56
-categories: 技术
-tags: office2016 激活 电话激活 正版
+date: 2017-12-19 22:41:34
+tags: 技巧
+categories: 技巧
 copyright: true
 ---
+
+<!-- more -->
 
 ## office2016电话激活教程
 
