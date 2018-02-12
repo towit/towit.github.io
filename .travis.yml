@@ -1,21 +1,30 @@
+# 使用语言
 language: node_js
-node_js:
-- '4.2'
+# node版本
+node_js: stable
+# 设置只监听哪个分支
 branches:
   only:
-  - master
+  - source
+
+directories:
+  - node_modules
+# tarvis生命周期执行顺序详见官网文档
 before_install:
-- npm install -g hexo
-- npm install
-install:
-- hexo generate
-deploy:
-  provider: s3
-  bucket: hexotest.computerlab.io
-  region: us-east-1
-  skip_cleanup: true
-  local_dir: public
-  access_key_id:
-    secure: HG5dH9ZtTRr7TWJ2ZrycVopciqMmpoMkD3XQX0q0D4PAv8jeuZPvMupme1AlP623f9ht6Eo2phvwpstn95hreW7FJf/PqhR1+MTwPmfVA3p2ydSH8k6l4rSjzxaut/jA2RRJGOXh2lpxCLxKZIxlyqhZeMz+nZedYn2oOWAdGQ6lHwVeqTMVO2ew3K5GAr9efeNgMvO2VLxRC2SYh1rJqvCgB9htJZW/i9H81CMnYZXgetI6MEiNXfYOTFxCGLsazn4veQvTRfBu5tAlPV6P/m0bLPzc414m/0/sWq1RxbPTxIHbPhbGI+JoEvC2nH7Yg5XbHtZWn1LVQcK24XCIeNEAu9WyaPfqdsfYu51Kp6gLYuWRU26z1tJ+KXwI3x+ZSEETZzSL428nr4iaLsPPkxVPznZOFO1xSrvyfAMyoW9RFS9SlYjW2K3HLTyz1ZKcns/CX6yiVfW82UzLwIvqWevBQVslWS12gWwCOEjIU+vcddNd9LT2KL9DR/U17bMmlWwUAzsqxwyRnk5K9Ff4tVWy2WVKdcsxSqBnKXQdIS2b6Y/5UthBJ1TeXy23kE2OnfLMotToyP+sr1f/ezxgCnRQ32KF+2mjufZ67ActsAZeouNIU4esxESgCdCveq2ZwztXA/sFWufOjoaM4dRBdcnztVuhB8lV7W9tyaYA8hU=
-  secret_access_key:
-    secure: fLczO3Oqp0YIjmV1HvXzZTYzxGOmmxhB7hCvLlkS1baAAWv/+O3VjKJCBergA64YYWl2yVtTERqnZxloedt3CMJEsVzIs3AabVLrLE08R2bgFfD9aqoEr9gXdc/kcOkUP2EsPjKERyS9iWZoOLHWA31F1Qr3LMTNnlDAIRkCwZRllC4+ejZ5amnvg5qKahVxzvPhwgfmdT/pOb78fzBVBfIQlnk2Z7U3tM6Nico8wo/zCvbM0xXNxyu21WBDSRb/uC3h9QHqTxUhI3NisjjPZZCN3RLqj7Jc7T8AXNf9dtIb4qOfAU9A1pAWzEpjUwqN7izI0AQb2DlseCjU8IITGjeofc1kbNZn8+mTY4PYIrtr2F1NDpTR2yeDhsQSeahMwP7RtgUzBcr9W0WVGYz+2K/scaunwYhfW7MdQ9WjlW2Tp4tnWBhgmp3IObmLe2l7qSVAkbXobR+jTA9mzBRGU7rs+KcayRyF2CY4qOK3F7iyge+vMvYinL9IdzVrll02mvaeUVySDiIUO/wVyF52ZMZjOGVwzgIBTUZG8F+6568wGDAFFN27llbtlcxPSzqq86cZCKFjXnQEA9c68Zf97HmPIxoOFuLxsp7U3A2qiDZevJ4Ypu3xVxd8nhDJRpgHXcMoqX5hYHzELj+lM+Wo/l4k6Cj71L/NI7MQSGJKPrQ=
+- git config --global user.name "towit"
+- git config --global user.email "ziyou@topluo.com"
+- npm install hexo-cli -g
+ 
+script:
+- hexo clean
+- hexo g
+after_success:
+- cd ./public
+- git init
+- git add --all .
+- git commit -m "Travis CI Auto Builder"
+# 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
+- git push --quiet --force https://$hexo@github.com/towit/towit.github.io.git
+  master
+- git push --quiet --force https://deweke:lzh1989.@git.coding.net/deweke/deweke.coding.me.git
+  master
