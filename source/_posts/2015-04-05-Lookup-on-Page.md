@@ -2,7 +2,7 @@
 layout: post
 title: Adding Lookup Field to a Page in Dynamics NAV
 date: 2015-04-05
-thumbnail: https://s3.amazonaws.com/ptsteadman-images/lookup.jpg
+thumbnail: 
 tags:
 - Resources
 - NAV

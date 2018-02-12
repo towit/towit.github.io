@@ -6,7 +6,7 @@ category: ".NET"
 tags: 
 - C#
 - Visual Studio
-thumbnail: https://s3.amazonaws.com/ptsteadman-images/vs.jpg
+thumbnail: 
 lede: "Visual Studio displays tabs as having the same 
 width as four spaces.  But if you're collaborating with someone working 
 in another text editor like vim, your automatically-inserted tabs will

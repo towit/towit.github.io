@@ -4,7 +4,7 @@ date: 2014-02-23
 tags:
 - Welcome
 - How-To
-thumbnail: https://s3.amazonaws.com/ptsteadman-images/helloworld.jpg
+thumbnail: 
 lede: "Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on github."
 featured: true
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: How To Impress Employers at Infosessions 
 date: 2015-05-02
-thumbnail: https://s3.amazonaws.com/ptsteadman-images/info2.jpg
+thumbnail: 
 category: Humor
 tags: 
 - funny
