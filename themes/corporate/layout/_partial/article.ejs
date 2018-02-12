@@ -31,15 +31,15 @@
           </p>
         <% } %>
       <% } else { %>
+			<!-- Table of Contents -->
+            <% if (!index && post.toc){ %>
+              <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                <%- toc(post.content) %>
+              </div>
+            <% } %>
         <%- post.content %>
       <% } %>
-	  <!-- Table of Contents -->
-	  <% if (!index && post.toc){ %>
-	  <div id="toc" class="toc-article">
-	  <strong class="toc-title">文章目录</strong>
-	  <%- toc(post.content) %>
-	  </div>
-	  <% } %>
     </div>
   </div>
   <% if (!index){ %>
