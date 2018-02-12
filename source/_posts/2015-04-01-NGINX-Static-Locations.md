@@ -7,7 +7,7 @@ tags:
 - Web Development
 thumbnail: 
 lede: "Everytime I finish a project, I have to relearn how to add new 'locations' (paths) to the NGINX virtual host."
-featured: true
+featured: false
 ---
 
 I try to get a lot of mileage out of the single AWS t2.micro instance I keep running, 
