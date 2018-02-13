@@ -2,37 +2,32 @@
 layout: index
 ---
 	<!-- BEGIN CAROUSEL -->            
-	<div class="col-sm-* front-carousel flush-with-header">
-	  <div id="myCarousel" class="carousel slide">
-	    <!-- Carousel items -->
-	    <div class="carousel-inner">
-	      <div class="item active">
-                <img src='https://luolvshi.me/wp-content/uploads/2018/01/1510284583.jpg'>
-		<div class="carousel-caption">
-		  <p>Excepturi sint occaecati cupiditate non provident</p>
-		</div>
-	      </div>
-	      <div class="item">
-                <img src='https://luolvshi.me/wp-content/uploads/2018/01/1510284910.jpg'>
-		<div class="carousel-caption">
-		  <p>Ducimus qui blanditiis praesentium voluptatum</p>
-		</div>
-	      </div>
-	      <div class="item">
-                <img src='https://luolvshi.me/wp-content/uploads/2018/01/1510284583.jpg'>
-		<div class="carousel-caption">
-		  <p>Ut non libero consectetur adipiscing elit magna</p>
-		</div>
-	      </div>
-	    </div>
-	    <!-- Carousel nav -->
-	    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-	      <i class="fa fa-angle-left"></i>
-	    </a>
-	    <a class="carousel-control right" href="#myCarousel" data-slide="next">
-	      <i class="fa fa-angle-right"></i>
-	    </a>
-	  </div>                
+	<div class="carousel slide flush-with-header">
+	<div id="myCarousel" class="carousel slide">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+    <div class="carousel-inner">
+        <div class="item active tp1">
+            <a href="#"><img src="https://luolvshi.me/wp-content/uploads/2018/01/1510284583.jpg" alt="第一张"></a>
+        </div>
+        <div class="item tp2">
+            <a href="#"><img src="https://luolvshi.me/wp-content/uploads/2018/01/1510284583.jpg" alt="第二张"></a>
+        </div>
+        <div class="item tp3">
+            <a href="#"><img src="https://luolvshi.me/wp-content/uploads/2018/01/1510284583.jpg" alt="第三张"></a>
+        </div>
+    </div>
+    <!--设置轮播器箭头区域-->
+    <a href="#myCarousel" data-slide="prev" class="carousel-control left">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a href="#myCarousel" data-slide="next" class="carousel-control right">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>              
 	</div>
 	<!-- END CAROUSEL -->
       </div>
