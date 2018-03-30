@@ -1,6 +1,6 @@
 title: 使用Amazon EC2及OpenVPN搭建属于自己的VPN服务器 
 copyright: true
-date: 2017-10-30 11:03:47
+date: 2018-033-29 11:03:47
 tags: OpenVPN VPN服务器
 categories: 服务器
 ---
@@ -10,8 +10,6 @@ categories: 服务器
 sudo wget http://swupdate.openvpn.org/as/openvpn-as-2.5-Ubuntu16.amd_64.deb
 注意： 如果下载不成功可以到以下地址下载，手动上传至服务器： 
 
-https://pan.baidu.com/s/1kWiEDYf 
-【密码：v7e9】
 系统会下载Ubuntu环境下的OpenVPN AS 2.5 64位版本。接着我们输入
 
 ubuntu:~$ sudo dpkg -i openvpn-as-2.5-Ubuntu16.amd_64.deb
@@ -31,6 +29,7 @@ configuration here: https://your-ip-address:943/admin
 Access Server web UIs are available here:
 Admin  UI: https://your-ip-address:943/admin
 Client UI: https://your-ip-address:943/
+
 但是实际上我们还需要手动再重新配置一遍：
 
 ubuntu:~$ sudo /usr/local/openvpn_as/bin/ovpn-init --force
@@ -78,7 +77,8 @@ Openvpn Update Running Server
 
 Windows用户请点击以下链接下载客户端（Linux用户请往后看）：
 
-openvpn-install-2.4.4-I601
+[openvpn-install-2.4.5-I601](https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.5-I601.exe)
+
 上面这个是OpenVPN官方Windows安装包，打不开的话用迅雷下，不放心的请自己从官网下。下载好之后安装，然后打开会提示我们还没有导入配置文件。没关系，这个时候我们在浏览器输入
 
 https://server-public-ip-address:943
