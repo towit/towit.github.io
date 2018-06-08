@@ -27,5 +27,3 @@ after_success:
 # 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
 - git push --quiet --force https://$hexo@github.com/towit/towit.github.io.git
   master
-- git push --quiet --force https://deweke:lzh1989.@git.coding.net/deweke/deweke.coding.me.git
-  master
